@@ -1,0 +1,44 @@
+/* @import "slick-carousel/slick/slick.css"; */
+
+.c-pointer {
+  cursor: pointer;
+}
+.modal-content {
+  border: 0;
+}
+
+/* image popup */
+img.mfp-img {
+  box-shadow: 0 0 8px rgb(0 0 0 / 60%);
+  position: absolute;
+  max-height: 392px;
+  padding: 0 !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mfp-img-container .mfp-content {
+  max-width: 400px !important;
+}
+.mfp-img-container .mfp-close {
+  top: -110px;
+  right: -24px;
+}
+
+.project-slider-active .slick-active .project-slider-item .video,
+.project-slider-active .slick-active .project-slider-item .content {
+  opacity: 1;
+  -webkit-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
+}
+.project-slider-item {
+  display: flex !important;
+}
+.project-three-active .project-item-three {
+  margin: 0;
+}
+
+.active-scroll-top {
+  display: inline-block;
+}
