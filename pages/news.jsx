@@ -19,6 +19,12 @@ const BlogStandard = () => {
         fetchNews().catch(console.error);
     })
 
+    const truncateText = (blocks, wordLimit) => {
+        const plainText = blocks.map(block => block.children.map(child => child.text).join(' ')).join(' ');
+        const words = plainText.split(' ');
+        return words.slice(0, wordLimit).join(' ') + (words.length > wordLimit ? '...' : '');
+    };
+
   return (
     <Layout>
       <PageBanner pageName={"News and Events"} />
@@ -65,7 +71,7 @@ const BlogStandard = () => {
                         </h6>
                         </div>
                         <div>
-                        <PortableText value={truncateText(newsItem.content, 10)} />
+                        <PortableText value={newsItem.content} />
                         </div>
                     </div>
                     </div>
