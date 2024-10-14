@@ -57,6 +57,7 @@ const BlogStandard = () => {
                            {newsItem.title}
                             </a>
                         </Link>
+                        
                         </h3>
                         <div className="author">
                         <img
