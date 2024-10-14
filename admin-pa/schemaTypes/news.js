@@ -9,6 +9,15 @@ export default {
             type:'string',
         },
         {
+            name:'slug',
+            title:'Slug',
+            type:'slug',
+            options:{
+                source:'content',
+                maxLength:120,
+            },
+        },
+        {
             name:'date',
             title:'Date',
             type:'date',

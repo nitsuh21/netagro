@@ -1,367 +1,76 @@
 import PageBanner from "@/src/components/PageBanner";
 import Partners from "@/src/components/Partners";
 import Layout from "@/src/layouts/Layout";
+import { useState, useEffect } from "react";
+import {client, urlFor} from "@/src/utils/configSanity"
+import { PortableText } from '@portabletext/react';
 import Link from "next/link";
 const BlogStandard = () => {
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            const query = `*[_type == "news"] | order(date desc) `
+            const fetch_news = await client.fetch(query)
+            console.log('here is the news',fetch_news)
+            setNews(fetch_news)
+        }
+
+        fetchNews().catch(console.error);
+    })
+
   return (
     <Layout>
-      <PageBanner pageName={"Blog Standard"} />
+      <PageBanner pageName={"News and Events"} />
       <section className="blog-standard-section pt-100 pb-60">
         <div className="container">
           <div className="row">
             <div className="col-xl-8 col-lg-7">
               <div className="blog-standard-wrapper">
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-7.jpg" alt="Post Image" />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
+              {news.map((newsItem, index) => (
+                    <div className="single-blog-post-three mb-30 wow fadeInUp">
+                    <div className="post-thumbnail">
+                        <img src="assets/images/blog/blog-7.jpg" alt="Post Image" />
                     </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-4.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
+                    <div className="entry-content">
+                        <div className="post-meta">
+                        <span className="date">
+                            <Link legacyBehavior href="/blog-details">
+                            <a>25 December 2022</a>
+                            </Link>
+                        </span>
+                        <span className="comment">
+                            <Link legacyBehavior href="/blog-details">
+                            <a>5 Comments</a>
+                            </Link>
+                        </span>
+                        </div>
+                        <h3 className="title">
                         <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
+                            <a>
+                           {newsItem.title}
+                            </a>
                         </Link>
-                      </h6>
+                        </h3>
+                        <div className="author">
+                        <img
+                            src="assets/images/logo/netagro-logo.jpg"
+                            alt="Author Image"
+                        />
+                        <h6>
+                            <span>By</span>
+                            <Link legacyBehavior href="/blog-details">
+                            <a>{newsItem.author}</a>
+                            </Link>
+                        </h6>
+                        </div>
+                        <div>
+                        <PortableText value={truncateText(newsItem.content, 10)} />
+                        </div>
                     </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-8.jpg" alt="Post Image" />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
                     </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-5.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img src="assets/images/blog/blog-9.jpg" alt="Post Image" />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-6.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blog-10.jpg"
-                      alt="Post Image"
-                    />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-7.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blog-11.jpg"
-                      alt="Post Image"
-                    />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-4.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blog-12.jpg"
-                      alt="Post Image"
-                    />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-5.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blog-13.jpg"
-                      alt="Post Image"
-                    />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-6.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
-                <div className="single-blog-post-three mb-30 wow fadeInUp">
-                  <div className="post-thumbnail">
-                    <img
-                      src="assets/images/blog/blog-14.jpg"
-                      alt="Post Image"
-                    />
-                  </div>
-                  <div className="entry-content">
-                    <div className="post-meta">
-                      <span className="date">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>25 December 2022</a>
-                        </Link>
-                      </span>
-                      <span className="comment">
-                        <Link legacyBehavior href="/blog-details">
-                          <a>5 Comments</a>
-                        </Link>
-                      </span>
-                    </div>
-                    <h3 className="title">
-                      <Link legacyBehavior href="/blog-details">
-                        <a>
-                          Progressively &amp; Enhanced Accessible Filterable{" "}
-                        </a>
-                      </Link>
-                    </h3>
-                    <div className="author">
-                      <img
-                        src="assets/images/blog/author-thumb-7.jpg"
-                        alt="Author Image"
-                      />
-                      <h6>
-                        <span>By</span>
-                        <Link legacyBehavior href="/blog-details">
-                          <a>Michael</a>
-                        </Link>
-                      </h6>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium
-                    </p>
-                  </div>
-                </div>
+                ))}
+
                 <ul className="gadden-pagination mb-40 wow fadeInUp">
                   <li>
                     <a href="#">
