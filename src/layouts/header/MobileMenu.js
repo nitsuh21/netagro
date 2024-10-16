@@ -37,191 +37,44 @@ const MobileMenu = ({ handleShow, logo, extraClass, barIcon }) => {
                 <Link legacyBehavior href="/index">
                   <a className="brand-logo">
                     <img
-                      src={"assets/images/logo/logo-black.png"}
+                      src={"assets/images/logo/netagro-logo.jpg"}
                       alt="Site Logo"
                     />
                   </a>
                 </Link>
               </div>
-              {/*=== Nav Search ===*/}
-              <div className="nav-search mb-30 d-block d-xl-none ">
-                <form onSubmit={(e) => e.preventDefault()}>
-                  <div className="form_group">
-                    <input
-                      type="email"
-                      className="form_control"
-                      placeholder="Search Here"
-                      name="email"
-                      required
-                    />
-                    <button className="search-btn">
-                      <i className="fas fa-search" />
-                    </button>
-                  </div>
-                </form>
-              </div>
               {/*====== main Menu ======*/}
               <nav className="main-menu">
                 <ul>
                   <li className="menu-item has-children">
-                    <a href="#">
+                  <Link legacyBehavior href="/">
                       Home
-                      <span
-                        className="dd-trigger"
-                        onClick={() => active("home")}
-                      >
-                        <i className="far fa-angle-down" />
-                      </span>
-                    </a>
-                    <ul className="sub-menu" style={activeSubMenu("home")}>
-                      <li>
-                        <Link legacyBehavior href="/">
-                          Home 01
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="index-2">
-                          Home 02
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="index-3">
-                          Home 03
-                        </Link>
-                      </li>
-                    </ul>
+                    </Link>
                   </li>
                   <li className="menu-item">
                     <Link legacyBehavior href="about">
                       About
                     </Link>
                   </li>
-                  <li className="menu-item has-children">
-                    <a href="#">
-                      Service
-                      <span
-                        className="dd-trigger"
-                        onClick={() => active("Service")}
-                      >
-                        <i className="far fa-angle-down" />
-                      </span>
-                    </a>
-                    <ul className="sub-menu" style={activeSubMenu("Service")}>
-                      <li>
-                        <Link legacyBehavior href="service">
-                          Our Service
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="service-details">
-                          Service Details
-                        </Link>
-                      </li>
-                    </ul>
+                  <li className="menu-item">
+                    <Link legacyBehavior href="services">
+                      Services
+                    </Link>
                   </li>
-                  <li className="menu-item has-children">
-                    <a href="#">
-                      Portfolio
-                      <span
-                        className="dd-trigger"
-                        onClick={() => active("Portfolio")}
-                      >
-                        <i className="far fa-angle-down" />
-                      </span>
-                    </a>
-                    <ul className="sub-menu" style={activeSubMenu("Portfolio")}>
-                      <li>
-                        <Link legacyBehavior href="project-grid">
-                          Project Grid
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="project-grid-2-column">
-                          Project Grid Two
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="project-masonry">
-                          Project Masonry
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="project-details">
-                          Project Details
-                        </Link>
-                      </li>
-                    </ul>
+                  <li className="menu-item">
+                    <Link legacyBehavior href="projects">
+                      Projects
+                    </Link>
                   </li>
-                  <li className="menu-item has-children">
-                    <a href="#">
-                      Blog
-                      <span
-                        className="dd-trigger"
-                        onClick={() => active("Blog")}
-                      >
-                        <i className="far fa-angle-down" />
-                      </span>
-                    </a>
-                    <ul className="sub-menu" style={activeSubMenu("Blog")}>
-                      <li>
-                        <Link legacyBehavior href="blog-standard">
-                          Blog Standard
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="blog-details">
-                          Blog Details
-                        </Link>
-                      </li>
-                    </ul>
+                  <li className="menu-item">
+                    <Link legacyBehavior href="news">
+                      News
+                    </Link>
                   </li>
-                  <li className="menu-item has-children">
-                    <a href="#">
-                      Pages
-                      <span
-                        className="dd-trigger"
-                        onClick={() => active("Pages")}
-                      >
-                        <i className="far fa-angle-down" />
-                      </span>
-                    </a>
-                    <ul className="sub-menu" style={activeSubMenu("Pages")}>
-                      <li>
-                        <Link legacyBehavior href="team">
-                          Our Team
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="shop">
-                          Our Shop
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="product-details">
-                          Product Details
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="testimonials">
-                          Testimonial
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="pricing">
-                          Pricing
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="faqs">
-                          Faq
-                        </Link>
-                      </li>
-                      <li>
-                        <Link legacyBehavior href="contact">
-                          Contact
-                        </Link>
-                      </li>
-                    </ul>
+                  <li className="menu-item">
+                    <Link legacyBehavior href="faqs">
+                      FAQs
+                    </Link>
                   </li>
                 </ul>
               </nav>

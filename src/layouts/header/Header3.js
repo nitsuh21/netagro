@@ -41,7 +41,7 @@ const Header3 = () => {
                   <Link legacyBehavior href="/index">
                     <a className="brand-logo">
                       <img
-                        src="assets/images/logo/logo-black.png"
+                        src="assets/images/logo/netagro-log2.png"
                         alt="Site Logo"
                       />
                     </a>

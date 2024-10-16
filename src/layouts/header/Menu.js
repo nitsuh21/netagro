@@ -26,7 +26,7 @@ const Menu = () => {
         </li>
         <li className="menu-item has-children">
           <Link legacyBehavior href="news">
-          News?
+          News
           </Link>
         </li>
         <li className="menu-item has-children">
