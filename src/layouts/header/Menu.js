@@ -30,8 +30,8 @@ const Menu = () => {
           </Link>
         </li>
         <li className="menu-item has-children">
-          <Link legacyBehavior href="faq">
-          faq
+          <Link legacyBehavior href="faqs">
+          FAQs
           </Link>
         </li>
       </ul>

@@ -219,53 +219,6 @@ const ServiceDetails = () => {
               </div>
             </div>
           </div>
-          {/*====== Post Navigation ======*/}
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="post-navigation pt-60 pb-60 border-top-1 wow fadeInDown">
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="navigation-item prev-post mb-40">
-                      <div className="thumb">
-                        <img
-                          src="assets/images/service/prev.jpg"
-                          alt="thumb image"
-                        />
-                      </div>
-                      <div className="text">
-                        <h3 className="title">
-                          <a href="#">Garden Makeup</a>
-                        </h3>
-                        <a href="#" className="btn-link">
-                          Read More
-                          <i className="far fa-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="navigation-item next-post mb-40">
-                      <div className="thumb">
-                        <img
-                          src="assets/images/service/next.jpg"
-                          alt="thumb image"
-                        />
-                      </div>
-                      <div className="text">
-                        <h3 className="title">
-                          <a href="#">Lawn Mowing</a>
-                        </h3>
-                        <a href="#" className="btn-link">
-                          Read More
-                          <i className="far fa-arrow-right" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       {/*====== End Service Details section ======*/}

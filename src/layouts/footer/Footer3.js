@@ -128,7 +128,10 @@ const Footer3 = () => {
                 <div className="copyright-nav float-lg-right">
                   <ul>
                     <li>
-                      <a href="#">Faqs</a>
+                      <Link href="faqs">
+                       Faqs
+                      </Link>
+                      
                     </li>
                     <li>
                       <a href="#"></a>
