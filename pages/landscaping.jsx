@@ -88,7 +88,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className="sidebar-widget widget-banner mb-30 wow fadeInUp">
                   <div className="banner-content text-white">
-                    <h3 className="title">Looking For Speciall Ally!</h3>
+                    <h3 className="title">Looking For Special Ally!</h3>
                     <p>You’re in right place</p>
                     <Link legacyBehavior href="/contact">
                       <a className="main-btn secondary-btn">Contact Us</a>

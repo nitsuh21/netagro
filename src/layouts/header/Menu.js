@@ -10,27 +10,27 @@ const Menu = () => {
           </Link>
         </li>
         <li className="menu-item">
-          <Link legacyBehavior href="about">
+          <Link legacyBehavior href="/about">
             About
           </Link>
         </li>
         <li className="menu-item has-children">
-        <Link legacyBehavior href="services">
+        <Link legacyBehavior href="/services">
           Services
           </Link>
         </li>
         <li className="menu-item has-children">
-          <Link legacyBehavior href="projects">
+          <Link legacyBehavior href="/projects">
           Projects
           </Link>
         </li>
         <li className="menu-item has-children">
-          <Link legacyBehavior href="news">
+          <Link legacyBehavior href="/news">
           News
           </Link>
         </li>
         <li className="menu-item has-children">
-          <Link legacyBehavior href="faqs">
+          <Link legacyBehavior href="/faqs">
           FAQs
           </Link>
         </li>

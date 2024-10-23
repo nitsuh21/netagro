@@ -7,6 +7,7 @@ import { PortableText } from '@portabletext/react';
 import Link from "next/link";
 const BlogStandard = () => {
     const [news, setNews] = useState([]);
+    const [recentNews, setRecentNews] = useState([])
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -15,9 +16,20 @@ const BlogStandard = () => {
             console.log('here is the news',fetch_news)
             setNews(fetch_news)
         }
-
         fetchNews().catch(console.error);
     })
+
+    useEffect(() => {
+      const fetchRecentNews = async () => {
+        const query = `*[_type == "news"] | order(date desc) [0...3]`;
+        const recentNews = await client.fetch(query);
+        setRecentNews(recentNews);
+        console.log(recentNews)
+      }
+
+      fetchRecentNews().catch(console.error);
+    }, [news])
+
 
     const truncateText = (blocks, wordLimit) => {
         const plainText = blocks.map(block => block.children.map(child => child.text).join(' ')).join(' ');
@@ -36,23 +48,22 @@ const BlogStandard = () => {
               {news.map((newsItem, index) => (
                     <div className="single-blog-post-three mb-30 wow fadeInUp">
                     <div className="post-thumbnail">
-                        <img src="assets/images/blog/blog-7.jpg" alt="Post Image" />
+                        <img
+                        src={urlFor(newsItem.coverImage).url()}
+                        alt="post thumb"
+                        height={300}
+                        />
                     </div>
                     <div className="entry-content">
                         <div className="post-meta">
                         <span className="date">
-                            <Link legacyBehavior href="/blog-details">
-                            <a>25 December 2022</a>
-                            </Link>
-                        </span>
-                        <span className="comment">
-                            <Link legacyBehavior href="/blog-details">
-                            <a>5 Comments</a>
+                            <Link legacyBehavior href={`/news/${newsItem.title}`}>
+                            <a>{newsItem.date}</a>
                             </Link>
                         </span>
                         </div>
                         <h3 className="title">
-                        <Link legacyBehavior href="/blog-details">
+                        <Link legacyBehavior href={`/news/${newsItem.title}`}>
                             <a>
                            {newsItem.title}
                             </a>
@@ -66,13 +77,13 @@ const BlogStandard = () => {
                         />
                         <h6>
                             <span>By</span>
-                            <Link legacyBehavior href="/blog-details">
+                            <Link legacyBehavior href={`news/${newsItem.title}`}>
                             <a>{newsItem.author}</a>
                             </Link>
                         </h6>
                         </div>
                         <div>
-                        <PortableText value={newsItem.content} />
+                        <p>{newsItem.slug}</p>
                         </div>
                     </div>
                     </div>
@@ -106,159 +117,121 @@ const BlogStandard = () => {
             </div>
             <div className="col-xl-4 col-lg-5">
               <div className="sidebar-widget-area">
-                {/*=== Search Widget ===*/}
-                <div className="sidebar-widget widget-search gray-bg mb-40 wow fadeInUp">
-                  <h4 className="widget-title">Search</h4>
-                  <form onSubmit={(e) => e.preventDefault()}>
-                    <div className="form_group">
-                      <label>
-                        <i className="far fa-search" />
-                      </label>
-                      <input
-                        type="text"
-                        className="form_control"
-                        placeholder="Search"
-                        name="search"
-                        required
-                      />
-                    </div>
-                  </form>
-                </div>
-                {/*=== Author Widget ===*/}
-                <div className="sidebar-widget widget-post-author mb-40 wow fadeInUp">
-                  <div className="author-img">
-                    <img
-                      src="assets/images/blog/author-1.jpg"
-                      alt="Author Image"
-                    />
-                  </div>
-                  <div className="author-content text-center">
-                    <div className="author-title-box">
-                      <h4>Jason C. Cavazos</h4>
-                      <span className="posiiton">CEO &amp; Founder</span>
-                    </div>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium totam
-                    </p>
-                    <ul className="social-link">
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-youtube" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-pinterest-p" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
                 {/*=== Category Widget ===*/}
-                <div className="sidebar-widget widget-category gray-bg mb-40 wow fadeInUp">
-                  <h4 className="widget-title">Category</h4>
+                <div className="sidebar-widget-area">
+                <div className="sidebar-widget widget-service-nav gray-bg mb-30 wow fadeInUp">
+                  <h4 className="widget-title">Services List</h4>
                   <ul>
                     <li>
-                      <a href="#">
-                        Yard Cleaning
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/landscaping">
+                        <a>
+                          Landscaping
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
-                        Garden Makeup
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/drip_and_splinkler_irrigation">
+                        <a>
+                          Drip and Splinkler Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
-                        Landscaping
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/family_drip_irrigation">
+                        <a>
+                          Family Drip Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
-                        Lawn Mowing
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/center_pivot_irrigation">
+                        <a>
+                          Center Pivot Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
-                        Decorative Plants
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/Hidroseeding_rehabilation">
+                        <a>
+                          Hidroseeding / Rehabilation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
-                        Yard Maintenance
-                        <i className="far fa-angle-double-right" />
-                      </a>
+                      <Link legacyBehavior href="/supply_and_import">
+                        <a>
+                         Equipment supply and import
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
+                <div className="sidebar-widget widget-banner mb-30 wow fadeInUp">
+                  <div className="banner-content text-white">
+                    <h3 className="title">Looking For Special Ally!</h3>
+                    <p>You’re in right place</p>
+                    <Link legacyBehavior href="/contact">
+                      <a className="main-btn secondary-btn">Contact Us</a>
+                    </Link>
+                    <img
+                      src="assets/images/sidebar/b-w-1.png"
+                      alt="Banner Image"
+                    />
+                  </div>
+                </div>
+                <div className="sidebar-widget widget-newsletter gray-bg mb-30 wow fadeInUp">
+                  <h4 className="widget-title">Newsletter</h4>
+                  <div className="sidebar-content">
+                    <p>
+                    Subscribe to our newsletter and get our newest updates
+                    </p>
+                    <form onSubmit={(e) => e.preventDefault()}>
+                      <div className="form_group">
+                        <input
+                          type="email"
+                          className="form_control"
+                          placeholder="Email Address"
+                          name="email"
+                          required
+                        />
+                      </div>
+                      <div className="form_group">
+                        <button className="main-btn primary-btn">
+                          Subscribe Now
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
                 {/*=== Recent Post Widget ===*/}
                 <div className="sidebar-widget widget-recent-post mb-40 wow fadeInUp">
                   <h4 className="widget-title">Recent News</h4>
                   <ul className="recent-post-list">
+                    {recentNews.map((newsItem, index) => (
                     <li className="post-thumbnail-content">
                       <img
-                        src="assets/images/blog/post-thumb-1.jpg"
+                        src={urlFor(newsItem.coverImage).url()}
                         alt="post thumb"
                       />
                       <div className="post-title-date">
                         <span className="posted-on">
-                          <a href="#">25 Dec 2022</a>
+                          <a href="#">{newsItem.date}</a>
                         </span>
                         <h6>
-                          <Link legacyBehavior href="/blog-details">
-                            <a>Build Progre Enhany Acces Filterable</a>
+                          <Link legacyBehavior href={`news/${newsItem.title}`}>
+                            <a>{newsItem.title}</a>
                           </Link>
                         </h6>
                       </div>
                     </li>
-                    <li className="post-thumbnail-content">
-                      <img
-                        src="assets/images/blog/post-thumb-2.jpg"
-                        alt="post thumb"
-                      />
-                      <div className="post-title-date">
-                        <span className="posted-on">
-                          <a href="#">25 Dec 2022</a>
-                        </span>
-                        <h6>
-                          <Link legacyBehavior href="/blog-details">
-                            <a>JavaScript Requirem For Acces ponen</a>
-                          </Link>
-                        </h6>
-                      </div>
-                    </li>
-                    <li className="post-thumbnail-content">
-                      <img
-                        src="assets/images/blog/post-thumb-3.jpg"
-                        alt="post thumb"
-                      />
-                      <div className="post-title-date">
-                        <span className="posted-on">
-                          <a href="#">25 Dec 2022</a>
-                        </span>
-                        <h6>
-                          <Link legacyBehavior href="/blog-details">
-                            <a>Build Progre Enhany Acces Filterable</a>
-                          </Link>
-                        </h6>
-                      </div>
-                    </li>
+                    ))}
                   </ul>
                 </div>
                 {/*=== Banner Widget ===*/}
@@ -274,17 +247,6 @@ const BlogStandard = () => {
                       alt="Banner Image"
                     />
                   </div>
-                </div>
-                {/*=== Tag Widget ===*/}
-                <div className="sidebar-widget widget-tag-cloud mb-40 wow fadeInUp">
-                  <h4 className="widget-title">Tags</h4>
-                  <a href="#">Gardening</a>
-                  <a href="#">Landscaping</a>
-                  <a href="#">Plants</a>
-                  <a href="#">Trimming</a>
-                  <a href="#">Yard</a>
-                  <a href="#">Yard Maintenance</a>
-                  <a href="#">Tree</a>
                 </div>
               </div>
             </div>

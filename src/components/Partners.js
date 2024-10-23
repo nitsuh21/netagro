@@ -13,7 +13,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-1.png"
+                  src="../../assets/images/partners/partner-1.png"
                   alt="Partner Image"
                 />
               </a>
@@ -23,7 +23,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-2.png"
+                  src="../../assets/images/partners/partner-2.png"
                   alt="Partner Image"
                 />
               </a>
@@ -33,7 +33,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-3.png"
+                  src="../../assets/images/partners/partner-3.png"
                   alt="Partner Image"
                 />
               </a>
@@ -43,7 +43,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-4.png"
+                  src="../../assets/images/partners/partner-4.png"
                   alt="Partner Image"
                 />
               </a>
@@ -53,7 +53,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-5.png"
+                  src="../../assets/images/partners/partner-5.png"
                   alt="Partner Image"
                 />
               </a>
@@ -63,7 +63,7 @@ const Partners = () => {
             <div className="partner-img">
               <a href="#">
                 <img
-                  src="assets/images/partners/partner-4.png"
+                  src="../../assets/images/partners/partner-4.png"
                   alt="Partner Image"
                 />
               </a>

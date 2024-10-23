@@ -1,5 +1,5 @@
 import { Accordion } from "react-bootstrap";
-const GaddenAccordion = ({ event, active, onClick, title }) => {
+const GaddenAccordion = ({ event, active, onClick, title, content }) => {
   return (
     <div className="accordion-card mb-15">
       <div className="accordion-header">
@@ -13,12 +13,10 @@ const GaddenAccordion = ({ event, active, onClick, title }) => {
           {title}
         </Accordion.Toggle>
       </div>
-      <Accordion.Collapse eventKey={event}>
+      <Accordion.Collapse eventKey={event} content={content}>
         <div className="accordion-body">
           <p>
-            Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
-            doloremque laudantium totam aperiam eaque quae abillo inventorecy
-            veritatis et architecto beatae vitae dicta sunt explicabo.
+            {content}
           </p>
         </div>
       </Accordion.Collapse>

@@ -28,7 +28,7 @@ const Header3 = () => {
                 <Link legacyBehavior href="/index">
                   <a className="brand-logo">
                     <img
-                      src="assets/images/logo/netagro-logo2.png"
+                      src="../../assets/images/logo/netagro-logo2.png"
                       alt="Site Logo"
                     />
                   </a>
@@ -41,7 +41,7 @@ const Header3 = () => {
                   <Link legacyBehavior href="/index">
                     <a className="brand-logo">
                       <img
-                        src="assets/images/logo/netagro-log2.png"
+                        src="../../assets/images/logo/netagro-log2.png"
                         alt="Site Logo"
                       />
                     </a>
@@ -94,7 +94,7 @@ const Header3 = () => {
                   data-target="#sidebar-modal"
                   onClick={handleShow}
                 >
-                  <img src="assets/images/bar2.png" alt="Image" />
+                  <img src="../../assets/images/bar2.png" alt="Image" />
                 </div>
                 <div className="navbar-toggler">
                   <span />
@@ -107,9 +107,9 @@ const Header3 = () => {
         </div>
         <MobileMenu
           handleShow={handleShow}
-          logo="assets/images/logo/netagro-logo2.png"
+          logo="../../assets/images/logo/netagro-logo2.png"
           extraClass={"main-bg navigation-white"}
-          barIcon="assets/images/bar2.png"
+          barIcon="../../assets/images/bar2.png"
         />
       </header>
       <Sidebar show={show} handleClose={handleClose} />

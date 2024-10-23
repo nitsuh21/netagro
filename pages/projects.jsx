@@ -70,7 +70,7 @@ const ProjectGrid = () => {
                               />
                             )}
                         <div className="hover-overlay">
-                          <Link legacyBehavior href="">
+                          <Link legacyBehavior href={`projects/${project.projectName}`}>
                             <a className="icon-btn">
                               <i className="fas fa-arrow-right" />
                             </a>
@@ -78,11 +78,11 @@ const ProjectGrid = () => {
                           <div className="hover-content text-white">
                             <div className="text">
                               <h3 className="title">
-                                <Link legacyBehavior href="">
+                                <Link legacyBehavior href={`projects/${project.projectName}`}>
                                   <a>{project.projectName}</a>
                                 </Link>
                               </h3>
-                              <Link legacyBehavior href="">
+                              <Link legacyBehavior href={`projects/${project.projectName}`}>
                                 <a>{project.projectType}</a>
                               </Link>
                             </div>

@@ -11,11 +11,10 @@ export default {
         {
             name:'slug',
             title:'Slug',
-            type:'slug',
+            type:'string',
             options:{
-                source:'content',
-                maxLength:120,
-            },
+                maxLength:96,
+            }
         },
         {
             name:'date',

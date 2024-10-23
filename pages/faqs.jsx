@@ -8,20 +8,21 @@ import { Accordion } from "react-bootstrap";
 const Faqs = () => {
   const faqsData1 = [
     {
-      title: "What Is Gardening ?",
+      title: "What are NETAGRO engineering services?",
+      content: "NETAGRO is equipped with experienced professionals capable of doing the study, design and implementation of modern irrigation projects for its customers with the best advises on the best and modern irrigation practices that are currently being applied in the world of modern irrigation."
     },
     {
-      title: "How Much Time to Do Better Gardening?",
+      title: "How can NETAGRO services help agricultural and landscaping investments?",
+      content: "NETAGRO services are designed in such a way that guaranteeing reliability, the best chance of high yield, cost and resource management, and fast return on your investment."
     },
     {
-      title: "Landscaping For Tree Plants ?",
+      title: "Do you provide technical services and agronomy services to any project?",
+      content: "Yes. We provide services to mega project covering thousands of hectares, to single hectare fields. No matter what size of the project, we find the best and the most cost-efficient technical solution for you."
     },
     {
-      title: "How Much Cost Gardening ?",
-    },
-    {
-      title: "Why We Build Gardening & Landscaping ?",
-    },
+      title: "How can NETAGRO service help grow my yield?How Much Cost Gardening ?",
+      content: "NETAGRO services we offer ranges from full irrigation management to technical & agronomy consulting services, result-based business models and long-term contracts to ensure stable success."
+    }
   ];
   const faqsData2 = [
     {
@@ -46,7 +47,7 @@ const Faqs = () => {
   const [active, setActive] = useState("collapse0");
   return (
     <Layout>
-      <PageBanner pageName={"Faqs"} />
+      <PageBanner pageName={"FAQs"} />
       <section className="faq-section pt-95">
         <div className="container">
           <Accordion
@@ -62,23 +63,103 @@ const Faqs = () => {
                       title={faq.title}
                       key={i}
                       event={`collapse${i}`}
+                      content={faq.content}
                       onClick={() => setActive(`collapse${i}`)}
                       active={active}
                     />
                   ))}
                 </div>
               </div>
-              <div className="col-lg-6">
-                <div className="faq-content-box wow fadeInRight">
-                  {faqsData1.map((faq, i) => (
-                    <GaddenAccordion
-                      title={faq.title}
-                      key={i}
-                      event={`collapseB${i}`}
-                      onClick={() => setActive(`collapse${i}`)}
-                      active={active}
+              <div className="sidebar-widget-area">
+              <div className="sidebar-widget widget-banner mb-30 wow fadeInUp">
+                  <div className="banner-content text-white">
+                    <h3 className="title">Looking For Special Ally!</h3>
+                    <p>You’re in the right place!</p>
+                    <Link legacyBehavior href="/contact">
+                      <a className="main-btn secondary-btn">Contact Us</a>
+                    </Link>
+                    <img
+                      src="assets/images/sidebar/b-w-1.png"
+                      alt="Banner Image"
                     />
-                  ))}
+                  </div>
+                </div>
+                <div className="sidebar-widget widget-service-nav gray-bg mb-30 wow fadeInUp">
+                  <h4 className="widget-title">Services List</h4>
+                  <ul>
+                    <li>
+                      <Link legacyBehavior href="/landscaping">
+                        <a>
+                          Landscaping
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link legacyBehavior href="/drip_and_splinkler_irrigation">
+                        <a>
+                          Drip and Splinkler Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link legacyBehavior href="/family_drip_irrigation">
+                        <a>
+                          Family Drip Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link legacyBehavior href="/center_pivot_irrigation">
+                        <a>
+                          Center Pivot Irrigation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link legacyBehavior href="/Hidroseeding_rehabilation">
+                        <a>
+                          Hidroseeding / Rehabilation
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link legacyBehavior href="/supply_and_import">
+                        <a>
+                         Equipment supply and import
+                          <i className="far fa-angle-double-right" />
+                        </a>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="sidebar-widget widget-newsletter gray-bg mb-30 wow fadeInUp">
+                  <h4 className="widget-title">Newsletter</h4>
+                  <div className="sidebar-content">
+                    <p>
+                    Subscribe to our newsletter and get our newest updates
+                    </p>
+                    <form onSubmit={(e) => e.preventDefault()}>
+                      <div className="form_group">
+                        <input
+                          type="email"
+                          className="form_control"
+                          placeholder="Email Address"
+                          name="email"
+                          required
+                        />
+                      </div>
+                      <div className="form_group">
+                        <button className="main-btn primary-btn">
+                          Subscribe Now
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -128,7 +209,7 @@ const Faqs = () => {
                     Get Every Single Update Or 24/7 Support
                   </h4>
                   <Link legacyBehavior href="/contact">
-                    <a className="main-btn golden-btn">Support &amp; Join</a>
+                    <a className="main-btn golden-btn">Contact Us</a>
                   </Link>
                 </div>
               </div>
@@ -159,182 +240,6 @@ const Faqs = () => {
         </div>
       </section>
       {/*====== End Info Section ======*/}
-      {/*====== Start Pricing Section ======*/}
-      <section className="pricing-section pb-60">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-xl-6 col-lg-12">
-              {/*====== Section-title ======*/}
-              <div className="section-title text-center mb-50 wow fadeInDown">
-                <span className="sub-title">
-                  <i className="flaticon-plant" />
-                  Pricing Plan
-                </span>
-                <h2>Smart Pricing Package</h2>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              {/*====== Pricing Item ======*/}
-              <div
-                className="single-pricing-item mb-40 wow fadeInUp"
-                data-wow-delay=".2s"
-              >
-                <div className="pricing-img">
-                  <img
-                    src="assets/images/pricing/pricing-1.jpg"
-                    alt="Pricing Image"
-                  />
-                </div>
-                <div className="pricing-body">
-                  <div className="shape shape-one">
-                    <span>
-                      <img src="assets/images/pricing/leaf.png" alt="Image" />
-                    </span>
-                  </div>
-                  <div className="pricing-title text-center mb-35">
-                    <h3 className="title">Residential Package</h3>
-                  </div>
-                  <ul className="mb-35">
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install a Patio or Pathway
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install Landscaping
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Waterproof a Deck Costs
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Remove a Tree Stump
-                    </li>
-                  </ul>
-                  <h2 className="price">
-                    <span className="currency">$</span>19.36
-                    <span className="duration">/Per Month</span>
-                  </h2>
-                  <div className="pricing-button text-center">
-                    <a href="#" className="main-btn primary-btn">
-                      Choose Package
-                    </a>
-                    <p>Get 23% Save For Services</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              {/*====== Pricing Item ======*/}
-              <div
-                className="single-pricing-item mb-40 wow fadeInDown"
-                data-wow-delay=".2s"
-              >
-                <div className="pricing-img">
-                  <img
-                    src="assets/images/pricing/pricing-2.jpg"
-                    alt="Pricing Image"
-                  />
-                </div>
-                <div className="pricing-body">
-                  <div className="shape shape-one">
-                    <span>
-                      <img src="assets/images/pricing/leaf.png" alt="Image" />
-                    </span>
-                  </div>
-                  <div className="pricing-title text-center mb-35">
-                    <h3 className="title">Commercial Package</h3>
-                  </div>
-                  <ul className="mb-35">
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install a Patio or Pathway
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install Landscaping
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Waterproof a Deck Costs
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Remove a Tree Stump
-                    </li>
-                  </ul>
-                  <h2 className="price">
-                    <span className="currency">$</span>39.47
-                    <span className="duration">/Per Month</span>
-                  </h2>
-                  <div className="pricing-button text-center">
-                    <a href="#" className="main-btn primary-btn">
-                      Choose Package
-                    </a>
-                    <p>Get 23% Save For Services</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              {/*====== Pricing Item ======*/}
-              <div
-                className="single-pricing-item mb-40 wow fadeInUp"
-                data-wow-delay=".2s"
-              >
-                <div className="pricing-img">
-                  <img
-                    src="assets/images/pricing/pricing-3.jpg"
-                    alt="Pricing Image"
-                  />
-                </div>
-                <div className="pricing-body">
-                  <div className="shape shape-one">
-                    <span>
-                      <img src="assets/images/pricing/leaf.png" alt="Image" />
-                    </span>
-                  </div>
-                  <div className="pricing-title text-center mb-35">
-                    <h3 className="title">Industrial Package</h3>
-                  </div>
-                  <ul className="mb-35">
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install a Patio or Pathway
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Install Landscaping
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Waterproof a Deck Costs
-                    </li>
-                    <li>
-                      <i className="fas fa-badge-check" />
-                      Remove a Tree Stump
-                    </li>
-                  </ul>
-                  <h2 className="price">
-                    <span className="currency">$</span>92.36
-                    <span className="duration">/Per Month</span>
-                  </h2>
-                  <div className="pricing-button text-center">
-                    <a href="#" className="main-btn primary-btn">
-                      Choose Package
-                    </a>
-                    <p>Get 15% Save For Services</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*====== End Pricing Section ======*/}
       {/*====== Start Partners Section ======*/}
       <Partners />
     </Layout>

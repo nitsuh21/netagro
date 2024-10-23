@@ -5,9 +5,11 @@ import Link from "next/link";
 import {client, urlFor} from "../../src/utils/configSanity"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const BlogDetails = () => {
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [recentNews, setRecentNews] = useState([])
   const router = useRouter();
 
@@ -18,10 +20,13 @@ const BlogDetails = () => {
       const news = await client.fetch(query);
       console.log('here are the news',news);
       setNews(news);
+      setLoading(false);
     }
 
     fetchNews();
   }, []);
+
+  if(loading) return <div>Loading...</div>
 
   // useEffect(() => {
   //   const fetchRecentNews = async () => {
@@ -34,7 +39,7 @@ const BlogDetails = () => {
   // }, []);
   return (
     <Layout>
-      <PageBanner pageName={`${news.title}`} />
+      <PageBanner pageName={`${news[0].title}`} />
       {/*====== Start Blog Details section ======*/}
       <section className="blog-details-section pt-100">
         <div className="container">
@@ -52,32 +57,33 @@ const BlogDetails = () => {
                       />
                       <Link legacyBehavior href="/blog-details">
                         <a>
-                          <span>By</span> ${news.author}
+                          <span>By</span>{news[0].author}
                         </a>
                       </Link>
                     </span>
                     <span className="date">
                       <Link legacyBehavior href="/blog-details">
-                        <a>${news.date}</a>
+                        <a>${news[0].date}</a>
                       </Link>
                     </span>
                   </div>
                   <div className="entry-content">
-                    <h3 className="title">
-                    {`${news.title}`}
-                    </h3>
-                    
-                    {`${news.content}`}
-                    
-                    <blockquote className="wp-block-quote">
-                      <img
-                        src="../assets/images/blog/quote.png"
-                        alt="quote image"
-                      />
-                      <h3>
-                      Nurturing the earth with every drop, we cultivate not just crops, but a sustainable future for generations to come.                      </h3>
-                      <span>NetAgro Team</span>
-                    </blockquote>
+                    <h3 className="title">{news[0].title}</h3>
+                    {news[0].content.map((block, index) => {
+                      if (block._type === 'block') {
+                        return block.children.map((child, childIndex) => (
+                          <p key={child._key}>{child.text}</p>
+                        ));
+                      } else if (block._type === 'image') {
+                        const imageUrl = urlFor(block.asset._ref).url();
+                        return (
+                          <div key={block._key} className="image-block">
+                            <Image src={imageUrl} alt="News Image" width={793} height={508} />
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 </div>
                 {/*===  Comments Form  ===*/}
