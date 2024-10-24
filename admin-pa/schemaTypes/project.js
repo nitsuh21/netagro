@@ -24,12 +24,12 @@ export default {
             type: 'string',
         },
         {
-            name: 'description',
-            title: 'Description',
-            type: 'array',
-            of: [
-                { type: 'block' },
-                { type: 'image' },
+            name:'description',
+            title:'Description',
+            type:'array',
+            of:[
+                {type:'block'},
+                {type:'image'},
             ],
         },
         {

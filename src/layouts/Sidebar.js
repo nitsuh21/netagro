@@ -20,7 +20,7 @@ const Sidebar = ({ show, handleClose }) => {
                   <Link legacyBehavior href="/index">
                     <a className="footer-logo">
                       <img
-                        src="assets/images/logo/logo-white.png"
+                        src="../../assets/images/logo/netagro-logo2.png"
                         alt="Brand Logo"
                       />
                     </a>

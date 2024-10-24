@@ -78,7 +78,7 @@ const BlogDetails = () => {
                         const imageUrl = urlFor(block.asset._ref).url();
                         return (
                           <div key={block._key} className="image-block">
-                            <Image src={imageUrl} alt="News Image" width={793} height={508} />
+                            <Image src={imageUrl} alt="News Image" width={593} height={308} />
                           </div>
                         );
                       }

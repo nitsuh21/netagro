@@ -24,7 +24,7 @@ const MobileMenu = ({ handleShow, logo, extraClass, barIcon }) => {
               <Link legacyBehavior href="/index">
                 <a className="brand-logo">
                   <img
-                    src={logo ? logo : "assets/images/logo/logo-black.png"}
+                    src={logo ? logo : "../../assets/images/logo/netagro-logo2.png"}
                     alt="Site Logo"
                   />
                 </a>
@@ -37,7 +37,7 @@ const MobileMenu = ({ handleShow, logo, extraClass, barIcon }) => {
                 <Link legacyBehavior href="/index">
                   <a className="brand-logo">
                     <img
-                      src={"assets/images/logo/netagro-logo.jpg"}
+                      src={"../../assets/images/logo/netagro-logo.jpg"}
                       alt="Site Logo"
                     />
                   </a>
@@ -52,27 +52,27 @@ const MobileMenu = ({ handleShow, logo, extraClass, barIcon }) => {
                     </Link>
                   </li>
                   <li className="menu-item">
-                    <Link legacyBehavior href="about">
+                    <Link legacyBehavior href="/about">
                       About
                     </Link>
                   </li>
                   <li className="menu-item">
-                    <Link legacyBehavior href="services">
+                    <Link legacyBehavior href="/services">
                       Services
                     </Link>
                   </li>
                   <li className="menu-item">
-                    <Link legacyBehavior href="projects">
+                    <Link legacyBehavior href="/projects">
                       Projects
                     </Link>
                   </li>
                   <li className="menu-item">
-                    <Link legacyBehavior href="news">
+                    <Link legacyBehavior href="/news">
                       News
                     </Link>
                   </li>
                   <li className="menu-item">
-                    <Link legacyBehavior href="faqs">
+                    <Link legacyBehavior href="/faqs">
                       FAQs
                     </Link>
                   </li>
@@ -99,7 +99,7 @@ const MobileMenu = ({ handleShow, logo, extraClass, barIcon }) => {
                 onClick={handleShow}
               >
                 <img
-                  src={barIcon ? barIcon : "assets/images/bar.png"}
+                  src={barIcon ? barIcon : "../../assets/images/bar.png"}
                   alt="Image"
                 />
               </div>

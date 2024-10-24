@@ -16,11 +16,12 @@ const Contact = () => {
                 {/*====== Contact Info Item ======*/}
                 <div className="contact-info-item text-center">
                   <div className="icon">
-                    <img src="assets/images/icon/icon-1.png" alt="icon" />
+                    <img src="../../assets/images/icon/icon-1.png" alt="icon" />
                   </div>
                   <div className="info">
                     <span className="title">Location</span>
-                    <h6>55 Main Street, 2nd Floor Melbourne, Australia</h6>
+                    <h6>Bole Sub city, Near Adey Ababa Stadium, Addis Ababa, Ethiopia </h6><hr />
+                    <h6>Meshek 83 Kfar Yehoshua 3658200, Israel</h6>
                   </div>
                 </div>
               </div>
@@ -33,10 +34,7 @@ const Contact = () => {
                   <div className="info">
                     <span className="title">Email Address</span>
                     <h6>
-                      <a href="mailto:support@gmail.com">support@gmail.com</a>
-                    </h6>
-                    <h6>
-                      <a href="mailto:infogarden.net">infogarden.net</a>
+                      <a href="mailto:info@netagroengineering.com">info@netagroengineering.com</a>
                     </h6>
                   </div>
                 </div>
@@ -50,7 +48,9 @@ const Contact = () => {
                   <div className="info">
                     <span className="title">Phone No</span>
                     <h6>
-                      <a href="tel:+000(123)45688">+000 (123) 456 88</a>
+                      <a href="tel:+251118627424"> Tel : +251118627424</a> <hr />
+                      <a href="tel:+251118627424"> Mobile : +251118627424</a> <hr />
+                      <a href="tel:+251118627424"> Mobile : +251118627424</a>
                     </h6>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ const Contact = () => {
               <div className="col-lg-6">
                 {/*=== Map Box ===*/}
                 <div className="map-box wow fadeInLeft mb-50">
-                  <iframe src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed" />
+                  <iframe src="https://maps.google.com/maps?q=Yoki%20Building&t=&z=13&ie=UTF8&iwloc=&output=embed" />
                 </div>
               </div>
               <div className="col-lg-6">

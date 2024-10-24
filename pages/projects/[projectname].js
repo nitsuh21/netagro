@@ -2,9 +2,10 @@ import PageBanner from "../../src/components/PageBanner";
 import Partners from "../../src/components/Partners";
 import Layout from "../../src/layouts/Layout";
 import { useEffect, useState } from "react";
-import { client } from "../../src/utils/configSanity";
+import { client, urlFor } from "../../src/utils/configSanity";
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import Image from "next/image";
 
 const ProjectDetails = () => {
   const [project, setProject] = useState(null);
@@ -42,7 +43,21 @@ const ProjectDetails = () => {
               <div className="col-lg-8">
                 <div className="project-info mb-30 wow fadeInLeft">
                   <h3 className="title">{project[0].projectName}</h3>
-                  <p>{project[0].description}</p>
+                  {project[0].description.map((block, index) => {
+                      if (block._type === 'block') {
+                        return block.children.map((child, childIndex) => (
+                          <p key={child._key}>{child.text}</p>
+                        ));
+                      } else if (block._type === 'image') {
+                        const imageUrl = urlFor(block.asset._ref).url();
+                        return (
+                          <div key={block._key} className="image-block">
+                            <Image src={imageUrl} alt="Project Image" width={593} height={308} />
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                 </div>
               </div>
               <div className="col-lg-4">
