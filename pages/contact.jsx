@@ -2,7 +2,44 @@ import PageBanner from "@/src/components/PageBanner";
 import Partners from "@/src/components/Partners";
 import Layout from "@/src/layouts/Layout";
 import Link from "next/link";
+import { useState } from "react";
+import { sendMessage } from "@/src/utils/api";
+
+
 const Contact = () => {
+  const [form, setForm] = useState(
+    {
+      name: "",
+      email: "",
+      number: "",
+      subject: "",
+      message: "",
+    },
+  )
+  const [status, setStatus] = useState("");
+
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(form);
+    const result = await sendMessage(form);
+    if (result.success) {
+      setForm({
+        name: "",
+        email: "",
+        number: "",
+        subject: "",
+        message: "",
+      });
+    } else {
+      setStatus(result.message);
+    }
+  }
+
   return (
     <Layout>
       <PageBanner pageName={"Contact Us"} />
@@ -87,7 +124,7 @@ const Contact = () => {
                 {/*====== Contact Form Wrapper ======*/}
                 <div className="contact-form-wrapper mb-50 wow fadeInRight">
                   <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
                     className="contact-form"
                   >
                     <div className="form_group">
@@ -99,6 +136,8 @@ const Contact = () => {
                         className="form_control"
                         placeholder="Full Name"
                         name="name"
+                        value={form.name}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -111,6 +150,8 @@ const Contact = () => {
                         className="form_control"
                         placeholder="Email Address"
                         name="email"
+                        value={form.email}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -123,6 +164,8 @@ const Contact = () => {
                         className="form_control"
                         placeholder="Phone Number"
                         name="number"
+                        value={form.number}
+                        onChange={handleChange}
                         required
                       />
                     </div>
@@ -147,6 +190,8 @@ const Contact = () => {
                         rows={3}
                         placeholder="Message"
                         name="message"
+                        value={form.message}
+                        onChange={handleChange}
                         defaultValue={""}
                       />
                     </div>
